@@ -1,0 +1,54 @@
+
+<div class="container">
+    <div class="row justify-content-start">
+        <div class="col" style="margin-top:20px">
+            <div *ngFor="let item of heroes"> <!--Primero, creamos un bucle que pase por todos los ids-->
+                <div *ngIf="item.id == this.heroi"> <!-- Luego, creamos un If para ver si coincide el ID con el último carácter de la ruta activa.
+                    p.d. Mirar archivo heroe.component.ts-->
+                    <h1 style="display: inline;">{{item.nombre.toUpperCase()}}</h1> <!--Fuente: https://www.w3schools.com/jsref/jsref_touppercase.asp-->
+                    <h1 style="display: inline; font-size: 25px;"> ({{item.aparicion.substring(0,4)}})</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+<div class="row justify-content-start">
+        <div class="col-4 d-flex justify-content-center"> <!--Fuentes: 
+                                                        (1) Flex: https://getbootstrap.com/docs/4.0/utilities/flex/ 
+                                                        (2): justify-content-center: https://www.w3schools.com/CSSref/css3_pr_justify-content.php-->
+            <div *ngFor="let item of heroes"> <!--Primero, creamos un bucle que pase por todos los ids-->
+                <div *ngIf="item.id == this.heroi"> <!-- Luego, creamos un If para ver si coincide el ID con el último carácter de la ruta activa.
+                    p.d. Mirar archivo heroe.component.ts-->
+                    
+                    <img src={{item.img}} class="card-img-top">
+                    <button type="button" [routerLink] = "['/heroe']"class="btn btn-outline-danger" style="width: 400px; margin-top:30px;">Regresar</button>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-8 d-flex">
+            <div *ngFor="let item of heroes">  
+
+                <div *ngIf="item.id == this.heroi"> <!--Condición si el id del array coincide con la subpágina-->
+                    <h1>{{item.nombre}}</h1>
+                    <hr class="solid"> <!--Fuente: https://www.w3schools.com/howto/howto_css_dividers.asp-->
+                    <p>{{item.bio}}</p>
+
+                    <!--CONDICIÓN IF CON THEN/ELSE-->
+                    <ng-container 
+                        *ngIf="item.casa == 'DC'; then DC; else Marvel"> <!--Creamos la condición-->
+                    </ng-container>
+                    <ng-template #DC> <!--then-->
+                        <img src= "assets/img/DC.jpg" style="width:300px; height:300px;" alt="DC">
+                    </ng-template>
+                    <ng-template #Marvel> <!--else-->
+                        <img src= "assets/img/marvel.png" style="width:400px; height:400px; margin-top:-70px;" alt="Marvel">
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
