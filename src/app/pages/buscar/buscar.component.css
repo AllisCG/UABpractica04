@@ -1,0 +1,22 @@
+#HeroesTitulo{
+    font-size: 40px;
+    display:inline-block;
+    font-weight: bold;
+}
+
+#MarvelDCTitulo{
+    font-size: 30px;
+    font-weight: normal;
+}
+
+#stylecont{
+    width: 70%;
+    margin-top:10px;
+}
+
+#stylecard {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}

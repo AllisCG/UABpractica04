@@ -15,8 +15,11 @@
       </a>
       
         <form role="search">
-          <input class="form-control ms-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Búsqueda</button>
+          <!--Decimos que este input es una variable llamada textobusqueda. Ponemos textobusqueda.value porque en textobusqueda se guardan muchos atributos distintos.-->
+          <input class="form-control ms-sm-2" type="search" placeholder="Escribe un héroe" aria-label="Search" (keyup)="cargar(textobusqueda.value)" (keypress)="regresar()" #textobusqueda>
+          <!-- Un botton puede ser un submit o un button. Si es submit, te está enviando un formulario.
+          Es decir, aparte de la acción de enviar, te valida. si sólo queremos enviar, button.-->
+          <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="buscar()">Búsqueda</button>
         </form>
 </nav>
 

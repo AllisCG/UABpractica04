@@ -1,16 +1,17 @@
+import { VariableBinding } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {RouterModule} from '@angular/router';
 import { Route } from '@angular/router';
 
 @Component({
-  selector: 'app-heroe',
-  templateUrl: './heroe.component.html',
-  styleUrls: ['./heroe.component.css']
+  selector: 'app-buscar',
+  templateUrl: './buscar.component.html',
+  styleUrls: ['./buscar.component.css']
 })
-export class HeroeComponent implements OnInit {
+export class BuscarComponent implements OnInit {
 
-  Heroes = [
+  heroes = [
     {
       id: 1,
       nombre: "Aquaman",
@@ -68,36 +69,38 @@ export class HeroeComponent implements OnInit {
       casa: "Marvel"
     }
   ];
+
   
+  textoFinal:any;
+
   id: any;
   nombreDetalle:any;
   bioDetalle:any;
   imgDetalle:any;
   aparicionDetalle:any;
   casaDetalle:any;
+  
+  arrayHeroes = Array();
+
+
+
+
 
 
   constructor(private route: ActivatedRoute /*Busca las rutas activas*/) { }
 
   ngOnInit(): void {
+    this.textoFinal = this.route.snapshot.paramMap.get('textoFinal');
     this.id = this.route.snapshot.paramMap.get('id');
-    
-    for (let i = 0; i < this.Heroes.length; i++){
-      console.log(this.Heroes[i].id)
-        if (this.id == this.Heroes[i].id || this.id.toLowerCase() == this.Heroes[i].nombre.toLowerCase().indexOf(this.id.tolowercase) >= 0) /*Esta función dice: de toda la cadena de carácteres, dime en qué posición numérica está this.id.tolowercase*/
-          {
-            console.log("Entro");
-            this.nombreDetalle = this.Heroes[i].nombre;
-            this.bioDetalle = this.Heroes[i].bio;
-            this.imgDetalle = this.Heroes[i].img;
-            this.aparicionDetalle = this.Heroes[i].aparicion;
-            this.casaDetalle = this.Heroes[i].casa;
-          }
+
+    for (let i=0; i < this.heroes.length; i++)
+    {
+      if (this.textoFinal.toLowerCase() == this.heroes[i].nombre.toLowerCase() ||  this.heroes[i].nombre.toLowerCase().indexOf(this.textoFinal.toLowerCase()) >= 0){
+        this.arrayHeroes.push(this.heroes[i])
+        console.log(this.heroes[i]);
+      }
     }
+    
   }
 
-
-  
-
 }
-
