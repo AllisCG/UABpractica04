@@ -2,8 +2,8 @@
 <div class="container">
     <div class="row">
         <div class="col" style="margin-top:20px">
-                <h1 style="display: inline;">{{nombreDetalle.toUpperCase()}}</h1> <!--Fuente: https://www.w3schools.com/jsref/jsref_touppercase.asp-->
-                <h1 style="display: inline; font-size: 25px;"> ({{aparicionDetalle.substring(0,4)}})</h1>
+                <h1 style="display: inline;">{{nombreDetalle  | uppercase }}</h1> <!--Fuente: https://www.w3schools.com/jsref/jsref_touppercase.asp-->
+                <h1 style="display: inline; font-size: 25px;"> ({{ aparicionDetalle | date: 'y' }})</h1>
         </div>
     </div>
 </div>

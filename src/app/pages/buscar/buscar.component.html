@@ -14,7 +14,7 @@
             <div id="stylecard" class="card">
               <img src={{item.img}} class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">{{item.nombre}}</h5>
+                <h5 class="card-title">{{item.nombre | titlecase }}</h5>
                 <p>{{item.bio}}</p>
                 <p style="color:grey">{{item.aparicion}}</p>
                 <div class="d-grid gap-2">
